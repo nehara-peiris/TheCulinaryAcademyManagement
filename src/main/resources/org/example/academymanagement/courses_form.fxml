@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academymanagement.controller.CoursesFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="857.0" layoutX="85.0" layoutY="156.0" stroke="BLACK" strokeType="INSIDE" width="750.0">
+         <fill>
+            <LinearGradient endX="0.40476190476190477" endY="0.7857142857142857" startX="0.05238095238095238" startY="0.1428571428571429">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5518091917037964" green="0.8026315569877625" blue="0.2006578892469406" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6352941393852234" green="0.7921568751335144" blue="0.4431372582912445" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Text fill="WHITE" layoutX="667.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses Management">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Text>
+      <TextField layoutX="342.0" layoutY="275.0" prefHeight="46.0" prefWidth="407.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="342.0" layoutY="545.0" prefHeight="46.0" prefWidth="407.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="342.0" layoutY="455.0" prefHeight="46.0" prefWidth="407.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="342.0" layoutY="365.0" prefHeight="46.0" prefWidth="407.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="152.0" layoutY="283.0" text="ID">
+         <font>
+            <Font name="Navilu" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="373.0" text="Program Name">
+         <font>
+            <Font name="Navilu" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="463.0" text="Duration">
+         <font>
+            <Font name="Navilu" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="553.0" text="Fee (LKR)">
+         <font>
+            <Font name="Navilu" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="253.0" layoutY="681.0" prefHeight="46.0" prefWidth="413.0" ripplerFill="#165e11" style="-fx-background-color: #00712D;" text="Add new" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="253.0" layoutY="817.0" prefHeight="46.0" prefWidth="413.0" ripplerFill="#165e11" style="-fx-background-color: #00712D;" text="Delete" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="253.0" layoutY="749.0" prefHeight="46.0" prefWidth="413.0" ripplerFill="#165e11" style="-fx-background-color: #00712D;" text="Update" textFill="WHITE" />
+      <TableView layoutX="949.0" layoutY="156.0" prefHeight="857.0" prefWidth="891.0" style="-fx-background-color: #a2ca71;">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="317.0" text="Program Name" />
+            <TableColumn prefWidth="303.0" text="Duration" />
+            <TableColumn prefWidth="195.0" text="Fee (LKR)" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

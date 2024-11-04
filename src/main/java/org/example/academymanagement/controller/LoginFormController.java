@@ -1,13 +1,23 @@
 package org.example.academymanagement.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,6 +31,25 @@ public class LoginFormController implements Initializable {
 
     @FXML
     private AnchorPane anchorPane2;
+
+    @FXML
+    private JFXButton btnLogin;
+
+    @FXML
+    private CheckBox showPw;
+
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    private PasswordField txtpw;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        animateAnchorPanes();
+    }
+
 
     public void animateAnchorPanes() {
         // Create TranslateTransition for the first AnchorPane
@@ -52,8 +81,20 @@ public class LoginFormController implements Initializable {
         sequence2.play();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        animateAnchorPanes();
+
+    public void btnLoginOnAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/academymanagement/student_form.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) btnLogin.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
+
 }

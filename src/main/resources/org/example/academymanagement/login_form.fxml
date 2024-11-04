@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="LoginMainNode" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academymanagement.controller.LoginFormController">
+<AnchorPane fx:id="LoginMainNode" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academymanagement.controller.LoginFormController">
    <children>
+      <AnchorPane fx:id="anchorPane1" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: darkgreen;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="960.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="290.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children></AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="632.0" layoutX="1180.0" layoutY="209.0" strokeType="INSIDE" width="534.0">
          <stroke>
-            <LinearGradient endX="0.0761904761904762" endY="1.0" startX="1.0" startY="0.14761904761904765">
+            <LinearGradient endX="0.076" endY="1.0" startX="1.0" startY="0.148">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.09000000357627869" green="0.36000001430511475" blue="0.09000000357627869" />
+                        <Color red="0.09" green="0.36" blue="0.09" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
@@ -27,11 +37,11 @@
             </LinearGradient>
          </stroke>
          <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.01428571428571429" startY="0.37619047619047613">
+            <LinearGradient endX="1.0" endY="1.0" startX="0.014" startY="0.376">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.09000000357627869" green="0.36000001430511475" blue="0.09000000357627869" />
+                        <Color red="0.09" green="0.36" blue="0.09" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
@@ -43,7 +53,29 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <AnchorPane fx:id="anchorPane1" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="960.0" AnchorPane.topAnchor="0.0" />
+      <TextField fx:id="txtUserName" layoutX="1239.0" layoutY="394.0" prefHeight="47.0" prefWidth="417.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </TextField>
+      <Text layoutX="1363.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Text>
+      <Text layoutX="1239.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+      <Text layoutX="1239.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="1239.0" layoutY="655.0" onAction="#btnLoginOnAction" prefHeight="47.0" prefWidth="417.0" ripplerFill="#054313" style="-fx-border-color: green; -fx-background-color: #aaabbb;" text="Login" textFill="#062f03">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <CheckBox fx:id="showPw" layoutX="1242.0" layoutY="575.0" mnemonicParsing="false" text="Show password" />
+      <PasswordField fx:id="txtpw" layoutX="1239.0" layoutY="502.0" prefHeight="47.0" prefWidth="417.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </PasswordField>
       <AnchorPane fx:id="anchorPane2" layoutX="960.0" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="960.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
