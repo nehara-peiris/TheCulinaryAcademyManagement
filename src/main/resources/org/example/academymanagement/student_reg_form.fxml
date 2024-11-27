@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +14,7 @@
 
 <AnchorPane fx:id="stuRegNode" prefHeight="900.0" prefWidth="920.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academymanagement.controller.StudentRegFormController">
    <children>
-      <Text fill="WHITE" layoutX="167.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management">
+      <Text fill="WHITE" layoutX="175.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
@@ -46,7 +47,6 @@
       <TextField fx:id="txtProgram" layoutX="351.0" layoutY="381.0" prefHeight="37.0" prefWidth="359.0" />
       <TextField fx:id="txtEmail" layoutX="351.0" layoutY="321.0" prefHeight="37.0" prefWidth="359.0" />
       <TextField fx:id="txtContact" layoutX="351.0" layoutY="261.0" prefHeight="37.0" prefWidth="359.0" />
-      <TextField fx:id="txtDate" layoutX="351.0" layoutY="501.0" prefHeight="37.0" prefWidth="359.0" />
       <TextField fx:id="txtSem" layoutX="351.0" layoutY="441.0" prefHeight="37.0" prefWidth="359.0" />
       <Label layoutX="211.0" layoutY="201.0" text="Name">
          <font>
@@ -78,5 +78,6 @@
             <Font name="Navilu" size="15.0" />
          </font>
       </Label>
+      <DatePicker fx:id="txtDate" layoutX="351.0" layoutY="501.0" prefHeight="37.0" prefWidth="359.0" />
    </children>
 </AnchorPane>

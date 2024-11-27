@@ -1,94 +1,62 @@
 package org.example.academymanagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.time.LocalTime;
 import java.util.Set;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class Student {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "student_id")
+    private String studentId;
 
-    @Column(nullable = false)
-    private String firstName;
+    @Column(name = "student_nic", nullable = false)
+    private String studentNic;
 
-    @Column(nullable = false)
-    private String lastName;
+    @Column(name = "dob", nullable = false)
+    private String dob;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private LocalDate enrollmentDate;
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
-    @OneToMany(mappedBy = "student")
-    private Set<Enrollment> enrollments = new HashSet<>();
+    @Column(name = "registration_date")
+    private LocalDate registrationDate;
 
-    // No-arg constructor for JPA
-    public Student() {}
+    @Column(name = "registration_time")
+    private LocalTime registrationTime;
 
-    public Student(String firstName, String lastName, String email, LocalDate enrollmentDate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudentProgram> studentPrograms;
+
+    public Student(String studentId, String studentNic, String dob, String fullName, String address, String email, String phone, LocalDate registrationDate, LocalTime registrationTime) {
+        this.studentId = studentId;
+        this.studentNic = studentNic;
+        this.dob = dob;
+        this.fullName = fullName;
+        this.address = address;
         this.email = email;
-        this.enrollmentDate = enrollmentDate;
-    }
-
-    // Getters and Setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getEnrollmentDate() {
-        return enrollmentDate;
-    }
-
-    public void setEnrollmentDate(LocalDate enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
-    }
-
-    // Override toString() for easy debugging and logging
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", enrollmentDate=" + enrollmentDate +
-                '}';
+        this.phone = phone;
+        this.registrationDate = registrationDate;
+        this.registrationTime = registrationTime;
     }
 }
+

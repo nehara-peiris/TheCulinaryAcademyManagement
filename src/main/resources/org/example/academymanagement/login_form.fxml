@@ -76,6 +76,7 @@
             <InnerShadow />
          </effect>
       </PasswordField>
+      <TextField fx:id="txtVisiblePassword" layoutX="1239.0" layoutY="502.0" prefHeight="47.0" prefWidth="417.0" />
       <AnchorPane fx:id="anchorPane2" layoutX="960.0" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="960.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

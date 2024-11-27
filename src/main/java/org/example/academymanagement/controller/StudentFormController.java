@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.example.academymanagement.dto.StudentDTO;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,49 +16,49 @@ import java.util.ResourceBundle;
 public class StudentFormController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colContact;
+    private TableColumn<StudentDTO, String> colAddress;
 
     @FXML
-    private TableColumn<?, ?> colDateofreg;
+    private TableColumn<StudentDTO, String> colContact;
 
     @FXML
-    private TableColumn<?, ?> colEmail;
+    private TableColumn<StudentDTO, String> colDOB;
 
     @FXML
-    private TableColumn<?, ?> colID;
+    private TableColumn<StudentDTO, String> colEmail;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<StudentDTO, String> colGender;
 
     @FXML
-    private TableColumn<?, ?> colProgram;
+    private TableColumn<StudentDTO, String> colID;
 
     @FXML
-    private TableColumn<?, ?> colSContact;
+    private TableColumn<StudentDTO, String> colName;
 
     @FXML
-    private TableColumn<?, ?> colSEmail;
+    private TableColumn<StudentDTO, String> colSContact;
 
     @FXML
-    private TableColumn<?, ?> colSID;
+    private TableColumn<StudentDTO, String> colSEmail;
 
     @FXML
-    private TableColumn<?, ?> colSName;
+    private TableColumn<StudentDTO, String> colSID;
 
     @FXML
-    private TableColumn<?, ?> colSemester;
+    private TableColumn<StudentDTO, String> colSName;
 
     @FXML
     private Label lblTotOfStudents;
 
     @FXML
-    private TableView<?> tblAllStudents;
-
-    @FXML
-    private TableView<?> tblSearchedStudents;
-
-    @FXML
     private AnchorPane stuNode;
+
+    @FXML
+    private TableView<StudentDTO> tblAllStudents;
+
+    @FXML
+    private TableView<StudentDTO> tblSearchedStudents;
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
@@ -71,7 +72,6 @@ public class StudentFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
 
     }
 }

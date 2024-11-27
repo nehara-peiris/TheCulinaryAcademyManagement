@@ -3,10 +3,9 @@ package org.example.academymanagement.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -15,60 +14,33 @@ import java.util.ResourceBundle;
 public class StudentRegFormController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colContact;
-
-    @FXML
-    private TableColumn<?, ?> colDateofreg;
-
-    @FXML
-    private TableColumn<?, ?> colEmail;
-
-    @FXML
-    private TableColumn<?, ?> colID;
-
-    @FXML
-    private TableColumn<?, ?> colName;
-
-    @FXML
-    private TableColumn<?, ?> colProgram;
-
-    @FXML
-    private TableColumn<?, ?> colSContact;
-
-    @FXML
-    private TableColumn<?, ?> colSEmail;
-
-    @FXML
-    private TableColumn<?, ?> colSID;
-
-    @FXML
-    private TableColumn<?, ?> colSName;
-
-    @FXML
-    private TableColumn<?, ?> colSemester;
-
-    @FXML
     private Label lblTotOfStudents;
 
     @FXML
-    private TableView<?> tblAllStudents;
+    private AnchorPane stuRegNode;
 
     @FXML
-    private TableView<?> tblSearchedStudents;
+    private TextField txtContact;
 
     @FXML
-    private AnchorPane stuNode;
+    private DatePicker txtDate;
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) {
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtName;
+
+    @FXML
+    private TextField txtProgram;
+
+    @FXML
+    private TextField txtSem;
+
+    @FXML
+    void btnRegisterOnAction(ActionEvent event) {
 
     }
-
-    @FXML
-    void txtSortbyOnAction(MouseEvent event) {
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

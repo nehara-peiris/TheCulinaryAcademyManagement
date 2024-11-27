@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academymanagement.controller.DashboardFormController">
+   <children>
+      <AnchorPane fx:id="DashLoadNode" layoutX="320.0" prefHeight="1080.0" prefWidth="1650.0" style="-fx-background-color: #121212;" />
+      <ImageView fitHeight="220.0" fitWidth="272.0" layoutX="22.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/CulinaryLogo.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="350.0" onAction="#btnRegOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: green;" text="Register Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="510.0" onAction="#btnStudentOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: green;" text="Student Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="430.0" onAction="#btnCourseOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: green;" text="Courses Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="946.0" onAction="#btnLogoutOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: red; -fx-background-color: darkred;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="590.0" onAction="#btnStuCoursesOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: green;" text="Student Course Details" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="270.0" onAction="#btnDashOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: green;" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="866.0" onAction="#btnUserAccOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: yellow;" text="User Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="670.0" onAction="#btnPaymentOnAction" prefHeight="60.0" prefWidth="272.0" ripplerFill="#7cff4d" style="-fx-border-color: green;" text="Payment Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
