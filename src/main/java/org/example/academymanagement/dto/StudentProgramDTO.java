@@ -13,4 +13,11 @@ public class StudentProgramDTO {
     private Integer payID;
     private double installmentFee;
     private double totalDue;
+
+    public StudentProgramDTO(StudentDTO student, ProgramDTO program, Integer payID, double installmentFee) {
+        this.student = student;
+        this.program = program;
+        this.payID = payID;
+        this.installmentFee = installmentFee;
+    }
 }

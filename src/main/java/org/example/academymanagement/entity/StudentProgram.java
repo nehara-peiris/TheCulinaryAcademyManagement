@@ -42,5 +42,10 @@ public class StudentProgram {
         this.totalDue = totalDue;
     }
 
-
+    public StudentProgram(Student student, Program program, Integer payID, double installmentFee) {
+        this.student = student;
+        this.program = program;
+        this.payID = payID;
+        this.installmentFee = installmentFee;
+    }
 }
