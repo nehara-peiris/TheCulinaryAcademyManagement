@@ -47,6 +47,10 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<StudentProgram> studentPrograms;
 
+    public Student(String studentId) {
+        this.studentId = studentId;
+    }
+
     public Student(String studentId, String studentNic, String dob, String fullName, String address, String email, String phone, LocalDate registrationDate, LocalTime registrationTime) {
         this.studentId = studentId;
         this.studentNic = studentNic;
@@ -57,6 +61,16 @@ public class Student {
         this.phone = phone;
         this.registrationDate = registrationDate;
         this.registrationTime = registrationTime;
+    }
+
+    public Student(String studentId, String studentNic, String dob, String fullName, String address, String email, String phone) {
+        this.studentId = studentId;
+        this.studentNic = studentNic;
+        this.dob = dob;
+        this.fullName = fullName;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
     }
 }
 

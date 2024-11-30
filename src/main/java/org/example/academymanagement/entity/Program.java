@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.academymanagement.dto.ProgramDTO;
 
 import java.util.Set;
 
@@ -29,6 +30,10 @@ public class Program {
 
     @OneToMany(mappedBy = "program", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<StudentProgram> studentPrograms;
+
+    public Program(String programId) {
+        this.programId = programId;
+    }
 
     public Program(String programId, String programName, String duration, Double fee) {
         this.programId = programId;

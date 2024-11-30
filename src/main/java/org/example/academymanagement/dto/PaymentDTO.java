@@ -4,17 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class PaymentDTO {
-    private Long paymentId;
-    private StudentProgramDTO studentProgram;
+    private Integer paymentId;
     private String paymentDescription;
     private Double amount;
-    private String paymentDate;
-    private String paymentTime;
-    private UserDTO user;
-    private StudentDTO student;
+    private LocalDate paymentDate;
+    private LocalTime paymentTime;
 }

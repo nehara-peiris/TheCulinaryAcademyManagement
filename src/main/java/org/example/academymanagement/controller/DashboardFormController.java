@@ -3,17 +3,58 @@ package org.example.academymanagement.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert;
+import org.example.academymanagement.bo.BOFactory;
+import org.example.academymanagement.bo.custom.StudentProgramBO;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Map;
 
 public class DashboardFormController {
 
     @FXML private AnchorPane rootNode;
     @FXML private AnchorPane DashLoadNode;
 
-    // Consolidated method to load and set any AnchorPane into the root or DashLoadNode
+    @FXML
+    private CategoryAxis axisProgramName;
+
+    @FXML
+    private NumberAxis axisStudentCount;
+
+    @FXML
+    private BarChart<String, Number> barchrtStudetsProgram;
+
+    StudentProgramBO studentProgramBO = (StudentProgramBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENTPROGRAM);
+
+    public void initialize() throws Exception {
+        populateBarChart();
+    }
+
+    private void populateBarChart() throws Exception {
+        barchrtStudetsProgram.getData().clear();
+
+        Map<String, Integer> stuProgCount = studentProgramBO.getAllStudentProgramtoChart();
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        stuProgCount.forEach((type, count) -> {
+            XYChart.Data<String, Number> data = new XYChart.Data<>(type, count);
+            series.getData().add(data);
+            data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    newValue.setStyle("-fx-bar-fill: #1c7850;");
+                }
+            });
+        });
+
+        barchrtStudetsProgram.getData().add(series);
+    }
+
     private void loadPane(String fxmlPath, AnchorPane targetNode) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -48,11 +89,6 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnRegOnAction(ActionEvent event) {
-        loadPane("/org/example/academymanagement/student_reg_form.fxml", DashLoadNode);
-    }
-
-    @FXML
     void btnCourseOnAction(ActionEvent event) {
         loadPane("/org/example/academymanagement/courses_form.fxml", DashLoadNode);
     }
@@ -63,18 +99,8 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnStuCoursesOnAction(ActionEvent event) {
-        // Implement functionality or remove if unnecessary
-    }
-
-    @FXML
-    void btnPaymentOnAction(ActionEvent event) {
-        // Implement functionality or remove if unnecessary
-    }
-
-    @FXML
     void btnUserAccOnAction(ActionEvent event) {
-        // Implement functionality or remove if unnecessary
+        loadPane("/org/example/academymanagement/user_form.fxml", DashLoadNode);
     }
 
     @FXML

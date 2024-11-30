@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.example.academymanagement.util.PasswordUtil;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,5 +37,13 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-}
+    // Use PasswordUtil for hashing the password before saving
+    public void setHashedPassword(String plainPassword) {
+        this.password = PasswordUtil.hashPassword(plainPassword);
+    }
 
+    // Use PasswordUtil for verifying the password during login
+    public boolean verifyPassword(String plainPassword) {
+        return PasswordUtil.verifyPassword(plainPassword, this.password);
+    }
+}

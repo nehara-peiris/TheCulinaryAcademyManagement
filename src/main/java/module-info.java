@@ -8,6 +8,7 @@ module org.example.academymanagement {
     requires java.naming;
     requires jbcrypt;
     requires static lombok;
+    requires java.desktop;
 
     opens org.example.academymanagement.controller to javafx.fxml;
     opens org.example.academymanagement.entity;

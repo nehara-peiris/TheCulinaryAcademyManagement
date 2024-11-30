@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import org.example.academymanagement.bo.BOFactory;
 import org.example.academymanagement.bo.custom.ProgramBO;
 import org.example.academymanagement.dto.ProgramDTO;
@@ -43,7 +44,44 @@ public class CoursesFormController {
         });
 
         loadProgramData();
+        Validations();
+        addTextChangeListener(txtName);
+        addTextChangeListener(txtFee);
+
     }
+
+
+    private void Validations() {
+        txtID.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            if (!event.getCharacter().matches("[C0-9]")) {
+                event.consume();
+            }
+        });
+
+    }
+
+    private void addTextChangeListener(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (textField == txtName) {
+                if (!newValue.isEmpty()) {
+                    if (!Character.isUpperCase(newValue.charAt(0))) {
+                        textField.setText(oldValue != null ? oldValue : "");
+                    } else {
+                        String correctedValue = Character.toUpperCase(newValue.charAt(0)) + newValue.substring(1);
+                        if (!newValue.equals(correctedValue)) {
+                            textField.setText(correctedValue);
+                        }
+                    }
+                }
+            }
+
+            if (textField == txtFee && !newValue.matches("^-?\\d+(\\.\\d+)?$")) {
+            }
+
+        });
+    }
+
 
     public void loadProgramData() {
         try {
@@ -56,16 +94,6 @@ public class CoursesFormController {
         }
     }
 
-    private boolean saveOrUpdateProgram(String id, String name, String duration, double fee, boolean isUpdate) {
-        try {
-            ProgramDTO programDTO = new ProgramDTO(id, name, duration, fee);
-            return isUpdate ? programBO.updateProgram(programDTO) : programBO.addProgram(programDTO);
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Error", "Invalid input. Please check the details.");
-            return false;
-        }
-    }
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -76,7 +104,7 @@ public class CoursesFormController {
     }
 
     @FXML
-    void btnAddOnAction(ActionEvent event) {
+    void btnAddOnAction(ActionEvent event) throws Exception {
         String id = txtID.getText();
         String name = txtName.getText();
         String duration = txtDuration.getText();
@@ -89,7 +117,7 @@ public class CoursesFormController {
             return;
         }
 
-        boolean isAdded = saveOrUpdateProgram(id, name, duration, fee, false);
+        boolean isAdded = programBO.addProgram(new ProgramDTO(id, name, duration, fee));
         if (isAdded) {
             showAlert("Success", "Program added successfully.");
             loadProgramData();
@@ -100,7 +128,7 @@ public class CoursesFormController {
     }
 
     @FXML
-    void btnUpdateOnaAction(ActionEvent event) {
+    void btnUpdateOnaAction(ActionEvent event) throws Exception {
         String id = txtID.getText();
         String name = txtName.getText();
         String duration = txtDuration.getText();
@@ -113,7 +141,7 @@ public class CoursesFormController {
             return;
         }
 
-        boolean isUpdated = saveOrUpdateProgram(id, name, duration, fee, true);
+        boolean isUpdated = programBO.updateProgram(new ProgramDTO(id, name, duration, fee));
         if (isUpdated) {
             showAlert("Success", "Program updated successfully.");
             loadProgramData();

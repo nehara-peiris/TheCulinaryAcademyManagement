@@ -1,10 +1,12 @@
 package org.example.academymanagement.bo.custom.impl;
 
 import org.example.academymanagement.bo.custom.ProgramBO;
+import org.example.academymanagement.config.FactoryConfiguration;
 import org.example.academymanagement.dao.DAOFactory;
 import org.example.academymanagement.dao.custom.ProgramDAO;
 import org.example.academymanagement.dto.ProgramDTO;
 import org.example.academymanagement.entity.Program;
+import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +17,13 @@ public class ProgramBOImpl implements ProgramBO {
 
     @Override
     public List<ProgramDTO> getAllPrograms() throws Exception {
-        ArrayList<ProgramDTO> customerDTOList = new ArrayList<>();
-        List<Program> customers = programDAO.getAll();
+        ArrayList<ProgramDTO> programDTOS = new ArrayList<>();
+        List<Program> programs = programDAO.getAll();
 
-        for (Program program : customers) {
-            customerDTOList.add(new ProgramDTO(program.getProgramId(), program.getProgramName(), program.getDuration(), program.getFee()));
+        for (Program program : programs) {
+            programDTOS.add(new ProgramDTO(program.getProgramId(), program.getProgramName(), program.getDuration(), program.getFee()));
         }
-        return customerDTOList;
+        return programDTOS;
     }
 
     @Override
@@ -47,7 +49,15 @@ public class ProgramBOImpl implements ProgramBO {
 
 
     @Override
-    public ProgramDTO getProgramDetails(String programId) {
-        return null;
+    public ProgramDTO getProgramById(String programId) {
+        try (Session session = FactoryConfiguration.getInstance().getSession()) {
+            Program program = session.get(Program.class, programId); // Assuming Program is your entity class
+            if (program != null) {
+                return new ProgramDTO(program.getProgramId(), program.getFee()); // Convert to DTO if needed
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null; // Return null if not found
     }
 }

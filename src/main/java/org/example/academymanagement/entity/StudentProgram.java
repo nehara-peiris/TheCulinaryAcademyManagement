@@ -4,13 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.academymanagement.entity.Program;
-import org.example.academymanagement.entity.Student;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,8 +25,8 @@ public class StudentProgram {
     @JoinColumn(name = "program_id", nullable = false)
     private Program program;
 
-    @Column(name = "pay_option")
-    private String payOption;
+    @Column(name = "pay_id")
+    private Integer payID;
 
     @Column(name = "installment_fee")
     private double installmentFee;
@@ -40,6 +34,13 @@ public class StudentProgram {
     @Column(name = "total_due")
     private double totalDue;
 
-    @Column(name = "pay_status")
-    private String payStatus;
+    public StudentProgram(Student student, Program program, Integer payID, double installmentFee, double totalDue) {
+        this.student = student;
+        this.program = program;
+        this.payID = payID;
+        this.installmentFee = installmentFee;
+        this.totalDue = totalDue;
+    }
+
+
 }

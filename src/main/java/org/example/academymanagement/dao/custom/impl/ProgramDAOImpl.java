@@ -3,9 +3,7 @@ package org.example.academymanagement.dao.custom.impl;
 import org.example.academymanagement.config.FactoryConfiguration;
 import org.example.academymanagement.dao.custom.ProgramDAO;
 import org.example.academymanagement.entity.Program;
-import org.example.academymanagement.entity.Student;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.util.List;
 

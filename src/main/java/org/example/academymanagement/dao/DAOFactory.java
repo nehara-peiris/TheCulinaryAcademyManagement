@@ -1,8 +1,6 @@
 package org.example.academymanagement.dao;
 
-import org.example.academymanagement.dao.custom.impl.ProgramDAOImpl;
-import org.example.academymanagement.dao.custom.impl.StudentDAOImpl;
-import org.example.academymanagement.dao.custom.impl.UserDAOImpl;
+import org.example.academymanagement.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -14,7 +12,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        PROGRAM, USER, STUDENT
+        PROGRAM, USER, STUDENT, PAYMENT, STUDENTPROGRAM
     }
 
     public SuperDAO getDAO(DAOTypes types){
@@ -25,6 +23,10 @@ public class DAOFactory {
                 return new ProgramDAOImpl();
             case STUDENT:
                 return new StudentDAOImpl();
+            case PAYMENT:
+                return new PaymentDAOImpl();
+            case STUDENTPROGRAM:
+                return new StudentProgramDAOImpl();
             default:
                 return null;
         }

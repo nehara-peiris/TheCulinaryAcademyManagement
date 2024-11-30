@@ -1,8 +1,6 @@
 package org.example.academymanagement.bo;
 
-import org.example.academymanagement.bo.custom.impl.ProgramBOImpl;
-import org.example.academymanagement.bo.custom.impl.StudentBOImpl;
-import org.example.academymanagement.bo.custom.impl.UserBOImpl;
+import org.example.academymanagement.bo.custom.impl.*;
 
 public class BOFactory {
 
@@ -14,7 +12,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        PROGRAM, USER, STUDENT
+        PROGRAM, USER, STUDENT, PAYMENT, STUDENTPROGRAM
     }
 
     public SuperBO getBO(BOTypes boTypes){
@@ -25,6 +23,10 @@ public class BOFactory {
                 return new ProgramBOImpl();
             case STUDENT:
                 return new StudentBOImpl();
+            case PAYMENT:
+                return new PaymentBOImpl();
+            case STUDENTPROGRAM:
+                return new StudentProgramBOImpl();
             default:
                 return null;
         }

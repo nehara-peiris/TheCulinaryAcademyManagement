@@ -12,4 +12,13 @@ public class ProgramDTO {
     private String programName;
     private String duration;
     private Double fee;
+
+    public ProgramDTO(String programId) {
+        this.programId = programId;
+    }
+
+    public ProgramDTO(String programId, Double fee) {
+        this.programId = programId;
+        this.fee = fee;
+    }
 }

@@ -5,4 +5,8 @@ import org.example.academymanagement.entity.User;
 
 public interface UserDAO extends CrudDAO<User> {
 
+    User authenticate(String username, String plainPassword);
+
+    User getUserByUsername(String username) ;
+
 }

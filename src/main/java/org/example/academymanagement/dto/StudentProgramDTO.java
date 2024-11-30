@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class StudentProgramDTO {
-    private Long studentProgramId;
     private StudentDTO student;
     private ProgramDTO program;
-    private String payOption;
+    private Integer payID;
     private double installmentFee;
     private double totalDue;
 }

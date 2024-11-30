@@ -21,4 +21,14 @@ public class StudentDTO {
     private String phone;
     private LocalDate registrationDate;
     private LocalTime registrationTime;
+
+    public StudentDTO(String studentId, String studentNic, String dob, String fullName, String address, String email, String phone) {
+        this.studentId = studentId;
+        this.studentNic = studentNic;
+        this.dob = dob;
+        this.fullName = fullName;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+    }
 }

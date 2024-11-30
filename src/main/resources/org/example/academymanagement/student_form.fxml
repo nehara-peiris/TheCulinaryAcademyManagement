@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,64 +17,215 @@
 
 <AnchorPane fx:id="stuNode" prefHeight="1075.0" prefWidth="1645.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academymanagement.controller.StudentFormController">
     <children>
-        <Text fill="WHITE" layoutX="532.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management">
-            <font>
-                <Font name="System Bold" size="48.0" />
-            </font>
-        </Text>
-        <TableView fx:id="tblAllStudents" layoutX="702.0" layoutY="246.0" prefHeight="755.0" prefWidth="893.0" style="-fx-border-color: green; -fx-background-color: #A2CA71;">
-            <columns>
-                <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
-                <TableColumn fx:id="colName" prefWidth="138.0" text="Name" />
-                <TableColumn fx:id="colEmail" prefWidth="203.0" text="Email" />
-                <TableColumn fx:id="colAddress" prefWidth="116.0" text="Address" />
-                <TableColumn fx:id="colContact" prefWidth="131.0" text="Contact" />
-                <TableColumn fx:id="colDOB" prefWidth="123.0" text="DOB" />
-                <TableColumn fx:id="colGender" prefWidth="114.0" text="Gender" />
-            </columns>
-        </TableView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="795.0" layoutX="40.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="630.0">
-            <fill>
-                <LinearGradient endX="0.40476190476190477" endY="0.7857142857142857" startX="0.05238095238095238" startY="0.1428571428571429">
-                    <stops>
+      <AnchorPane fx:id="MainNode" layoutY="7.0" prefHeight="1075.0" prefWidth="1645.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <Text fill="WHITE" layoutX="530.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management">
+                  <font>
+                      <Font name="System Bold" size="48.0" />
+                  </font>
+              </Text>
+              <TableView fx:id="tblAllStudents" layoutX="694.0" layoutY="197.0" prefHeight="755.0" prefWidth="893.0" style="-fx-border-color: green; -fx-background-color: #A2CA71;">
+                  <columns>
+                      <TableColumn fx:id="colID" prefWidth="92.0" text="ID" />
+                      <TableColumn fx:id="colName" prefWidth="162.0" text="Name" />
+                      <TableColumn fx:id="colEmail" prefWidth="171.0" text="Email" />
+                      <TableColumn fx:id="colAddress" prefWidth="179.0" text="Address" />
+                      <TableColumn fx:id="colContact" prefWidth="161.0" text="Contact" />
+                      <TableColumn fx:id="colDOB" prefWidth="126.0" text="DOB" />
+                  </columns>
+              </TableView>
+              <Rectangle arcHeight="5.0" arcWidth="5.0" height="795.0" layoutX="41.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="630.0">
+                  <fill>
+                      <LinearGradient endX="0.40476190476190477" endY="0.7857142857142857" startX="0.05238095238095238" startY="0.1428571428571429">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.5518091917037964" green="0.8026315569877625" blue="0.2006578892469406" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.6352941393852234" green="0.7921568751335144" blue="0.4431372582912445" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </fill>
+              </Rectangle>
+              <Text layoutX="80.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total no. of Students" wrappingWidth="144.388671875">
+                  <font>
+                      <Font name="Navilu" size="14.0" />
+                  </font>
+              </Text>
+              <Label fx:id="lblTotOfStudents" layoutX="50.0" layoutY="202.0" prefHeight="30.0" prefWidth="205.0">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </Label>
+              <Text fill="WHITE" layoutX="694.0" layoutY="177.0" onMouseClicked="#txtSortbyOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort by">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+              <JFXButton buttonType="RAISED" layoutX="431.0" layoutY="195.0" onAction="#btnRegOnAction" prefHeight="37.0" prefWidth="184.0" style="-fx-background-color: #00712D;" text="Register New Student" textFill="WHITE" />
+              <TableView fx:id="tblSearchedStudents" layoutX="72.0" layoutY="272.0" prefHeight="643.0" prefWidth="568.0" style="-fx-background-color: #80AF81;">
+                  <columns>
+                      <TableColumn fx:id="colSID" prefWidth="143.0" text="Student ID" />
+                      <TableColumn fx:id="colPID" prefWidth="144.0" text="Program ID" />
+                      <TableColumn fx:id="colPayId" prefWidth="134.0" text="Pay ID" />
+                      <TableColumn fx:id="colInstallment" prefWidth="144.0" text="Installmet Fee" />
+                  </columns>
+              </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="EditNode" prefHeight="852.0" prefWidth="786.0" style="-fx-background-color: black;">
+         <children>
+            <TextField fx:id="txtName1" layoutX="293.0" layoutY="276.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtEmail1" layoutX="293.0" layoutY="426.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtContact1" layoutX="293.0" layoutY="351.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="148.0" layoutY="277.0" text="Name" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="352.0" text="Contact" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="427.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="577.0" text="DOB" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="txtDOB1" layoutX="293.0" layoutY="576.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="148.0" layoutY="127.0" text="Student ID" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtID1" layoutX="293.0" layoutY="126.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="148.0" layoutY="202.0" text="NIC" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="502.0" text="Address" textFill="WHITE">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNIC1" layoutX="293.0" layoutY="201.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtAddress1" layoutX="293.0" layoutY="501.0" prefHeight="37.0" prefWidth="359.0" />
+            <JFXButton buttonType="RAISED" layoutX="146.0" layoutY="749.0" onAction="#btnupdateOnAction" prefHeight="37.0" prefWidth="122.0" ripplerFill="#1f4016" style="-fx-background-color: #00712D;" text="Update" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="342.0" layoutY="749.0" onAction="#btnDeleteOnAction" prefHeight="37.0" prefWidth="122.0" ripplerFill="#1f4016" style="-fx-background-color: #00712D;" text="Delete" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="530.0" layoutY="749.0" onAction="#btnCancelOnAction" prefHeight="37.0" prefWidth="122.0" ripplerFill="#1f4016" style="-fx-background-color: #00712D;" text="Cancel" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="stuRegNode" layoutX="10.0" layoutY="10.0" prefHeight="1075.0" prefWidth="1645.0" style="-fx-background-color: #121212;">
+         <children>
+            <Text fill="WHITE" layoutX="552.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="852.0" layoutX="138.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="1369.0">
+               <fill>
+                  <LinearGradient endX="0.40476190476190477" endY="0.7857142857142857" startX="0.05238095238095238" startY="0.1428571428571429">
+                     <stops>
                         <Stop>
-                            <color>
-                                <Color red="0.5518091917037964" green="0.8026315569877625" blue="0.2006578892469406" />
-                            </color>
+                           <color>
+                              <Color red="0.5518091917037964" green="0.8026315569877625" blue="0.2006578892469406" />
+                           </color>
                         </Stop>
                         <Stop offset="1.0">
-                            <color>
-                                <Color red="0.6352941393852234" green="0.7921568751335144" blue="0.4431372582912445" />
-                            </color>
+                           <color>
+                              <Color red="0.6352941393852234" green="0.7921568751335144" blue="0.4431372582912445" />
+                           </color>
                         </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <Text layoutX="67.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total no. of Students" wrappingWidth="144.388671875">
-            <font>
-                <Font name="Navilu" size="14.0" />
-            </font>
-        </Text>
-        <TextField layoutX="67.0" layoutY="398.0" prefHeight="24.0" prefWidth="379.0" promptText="course" />
-        <Label fx:id="lblTotOfStudents" layoutX="225.0" layoutY="250.0" prefHeight="30.0" prefWidth="205.0">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <JFXButton buttonType="RAISED" layoutX="472.0" layoutY="398.0" onAction="#btnSearchOnAction" ripplerFill="#3b5e0a" style="-fx-background-color: #00712D;" text="search" textFill="WHITE" />
-        <Text fill="WHITE" layoutX="702.0" layoutY="223.0" onMouseClicked="#txtSortbyOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort by">
-         <font>
-            <Font size="18.0" />
-         </font></Text>
-        <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="246.0" prefHeight="37.0" prefWidth="184.0" style="-fx-background-color: #00712D;" text="Register New Student" textFill="WHITE" />
-        <TableView fx:id="tblSearchedStudents" layoutX="66.0" layoutY="509.0" prefHeight="322.0" prefWidth="568.0" style="-fx-background-color: #80AF81;">
-            <columns>
-                <TableColumn fx:id="colSID" prefWidth="69.0" text="ID" />
-                <TableColumn fx:id="colSName" prefWidth="152.0" text="Name" />
-                <TableColumn fx:id="colSContact" prefWidth="151.0" text="Contact" />
-                <TableColumn fx:id="colSEmail" prefWidth="193.0" text="Email" />
-            </columns>
-        </TableView>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label fx:id="lblTotOfStudents1" layoutX="242.0" layoutY="250.0" prefHeight="30.0" prefWidth="216.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="453.0" layoutY="807.0" onAction="#btnRegisterOnAction" prefHeight="37.0" prefWidth="184.0" ripplerFill="#1f4016" style="-fx-background-color: #00712D;" text="Register New Student" textFill="WHITE" />
+            <TextField fx:id="txtName" layoutX="365.0" layoutY="349.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtEmail" layoutX="365.0" layoutY="499.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtContact" layoutX="365.0" layoutY="424.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="220.0" layoutY="350.0" text="Name">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="425.0" text="Contact">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="500.0" text="Email">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="650.0" text="DOB">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="txtDOB" layoutX="365.0" layoutY="649.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="220.0" layoutY="200.0" text="Student ID">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtID" layoutX="365.0" layoutY="199.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="220.0" layoutY="275.0" text="NIC">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="575.0" text="Address">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNIC" layoutX="365.0" layoutY="274.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtAddress" layoutX="365.0" layoutY="574.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="935.0" layoutY="275.0" text="Fee">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="935.0" layoutY="201.0" text="Program">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="935.0" layoutY="350.0" text="Paid Amount">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbProgramId" layoutX="1077.0" layoutY="199.0" prefHeight="37.0" prefWidth="359.0" />
+            <Label layoutX="935.0" layoutY="425.0" text="Remaining">
+               <font>
+                  <Font name="Navilu" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPaidAmout" layoutX="1077.0" layoutY="357.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtFee" layoutX="1077.0" layoutY="274.0" prefHeight="37.0" prefWidth="359.0" />
+            <TextField fx:id="txtRemaining" layoutX="1077.0" layoutY="424.0" prefHeight="37.0" prefWidth="359.0" />
+            <JFXButton buttonType="RAISED" layoutX="138.0" layoutY="61.0" onAction="#btnBackOnAtion" prefHeight="37.0" prefWidth="81.0" ripplerFill="#1f4016" style="-fx-background-color: #00712D;" text="Back" textFill="WHITE" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
